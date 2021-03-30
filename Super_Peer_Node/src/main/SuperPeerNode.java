@@ -11,11 +11,13 @@ public class SuperPeerNode {
 
 
     static main.Logger logger;
+    static volatile HashMap<String, BroadcastReply> broadcastReplyHashMap;
 
     enum clientType {
         SUPER_PEER,
         PEER
     }
+
 
     public static void main(String[] args) {
 
@@ -34,9 +36,9 @@ public class SuperPeerNode {
         superPeerNode.createLogFile();
         /* Create the broadcast messages hashmap Output and Input */
         ConcurrentHashMap<String, BroadcastMessage> broadcastMessageConcurrentHashMap = new ConcurrentHashMap<>();
-        ConcurrentHashMap<String, BroadcastReply> broadcastReplyConcurrentHashMap = new ConcurrentHashMap<>();
+        broadcastReplyHashMap = new HashMap<>();
 
-        Config config=superPeerNode.readConfigFile(broadcastMessageConcurrentHashMap, broadcastReplyConcurrentHashMap);
+        Config config=superPeerNode.readConfigFile(broadcastMessageConcurrentHashMap);
 
 
         try {
@@ -58,10 +60,10 @@ public class SuperPeerNode {
 
                 if(command.equals("superpeer_request")) {
                     type=0;
-                    new SuperPeerHandler(socket, dataInputStream, dataOutputStream, broadcastMessageConcurrentHashMap, broadcastReplyConcurrentHashMap, config, logger).start();
+                    new SuperPeerHandler(socket, dataInputStream, dataOutputStream, broadcastMessageConcurrentHashMap, broadcastReplyHashMap, config, logger).start();
                 } else if(command.equals("peer_request")) {
                     type=1;
-                    new ClientHandler(socket, dataInputStream, dataOutputStream, broadcastReplyConcurrentHashMap,  config,  logger).start();
+                    new ClientHandler(socket, dataInputStream, dataOutputStream, broadcastReplyHashMap,  config,  logger).start();
                 }
 
                 logger.serverLog("Accepted a request from "+clientType.values()[type]+" Total Number of Requests: "+totalRequests);
@@ -73,8 +75,7 @@ public class SuperPeerNode {
     }
 
     /* Read config file */
-    private Config readConfigFile(ConcurrentHashMap<String, BroadcastMessage> broadcastMessageConcurrentHashMap,
-                                  ConcurrentHashMap<String, BroadcastReply> broadcastReplyConcurrentHashMap) {
+    private Config readConfigFile(ConcurrentHashMap<String, BroadcastMessage> broadcastMessageConcurrentHashMap) {
 
         String configFilePath=System.getProperty("user.dir")+"/resources/config.properties";
         HashMap<String,String> configProperties=new HashMap<>();
@@ -107,7 +108,7 @@ public class SuperPeerNode {
             SuperNode superNode = superNodeConcurrentHashMap.get(superNodeId);
             new SuperPeerHandler(superNode.getSocket(),
                     superNode.getDataInputStream(),
-                    superNode.getDataOutputStream(), broadcastMessageConcurrentHashMap, broadcastReplyConcurrentHashMap, config, logger).start();
+                    superNode.getDataOutputStream(), broadcastMessageConcurrentHashMap, broadcastReplyHashMap, config, logger).start();
         }
 
         return config;

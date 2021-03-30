@@ -23,16 +23,16 @@ public class ClientHandler extends  Thread {
     String clientId;
     Logger logger;
     Config config;
-    ConcurrentHashMap<String, BroadcastReply> broadcastReplyConcurrentHashMap;
+    volatile HashMap<String, BroadcastReply> broadcastReplyHashMap;
 
-    ClientHandler(Socket socket, DataInputStream dataInputStream, DataOutputStream dataOutputStream, ConcurrentHashMap<String, BroadcastReply> broadcastReplyConcurrentHashMap,
+    ClientHandler(Socket socket, DataInputStream dataInputStream, DataOutputStream dataOutputStream, HashMap<String, BroadcastReply> broadcastReplyHashMap,
                   Config config, Logger logger) {
         this.socket=socket;
         this.logger=logger;
         this.config=config;
         this.dataInputStream = dataInputStream;
         this.dataOutputStream = dataOutputStream;
-        this.broadcastReplyConcurrentHashMap=broadcastReplyConcurrentHashMap;
+        this.broadcastReplyHashMap=broadcastReplyHashMap;
         setClientId();
     }
 
@@ -246,13 +246,15 @@ public class ClientHandler extends  Thread {
             /* It will wait a maximum of 5 minutes */
             while (i < THRESHOLD_TO_WAIT_TILL_REPLY) {
 
-               if(broadcastReplyConcurrentHashMap.containsKey(broadcastId)) {
+               if(broadcastReplyHashMap.containsKey(broadcastId)) {
                    /* We have got a response */
-                   BroadcastReply reply = broadcastReplyConcurrentHashMap.get(broadcastId);
+                   logger.serverLog("We have got a response for a files location! ");
+                   BroadcastReply reply = broadcastReplyHashMap.get(broadcastId);
                    result.add(reply.getPeerNodeWithFileId());
                    break;
                }
 
+                logger.serverLog("Broadcast reply not yet received! Retrying again in 1 minute! ");
                 TimeUnit.MINUTES.sleep(1);
                 i++;
             }

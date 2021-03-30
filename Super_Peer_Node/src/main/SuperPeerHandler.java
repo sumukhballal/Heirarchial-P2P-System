@@ -3,6 +3,7 @@ package main;
 import javax.swing.text.AbstractDocument;
 import java.io.*;
 import java.net.Socket;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -17,11 +18,11 @@ public class SuperPeerHandler extends Thread {
     Logger logger;
     Config config;
     ConcurrentHashMap<String, BroadcastMessage> broadcastMessageConcurrentHashMap;
-    ConcurrentHashMap<String, BroadcastReply> broadcastReplyConcurrentHashMap;
+    volatile HashMap<String, BroadcastReply> broadcastReplyHashMap;
 
     SuperPeerHandler(Socket socket, DataInputStream dataInputStream, DataOutputStream dataOutputStream,
                      ConcurrentHashMap<String, BroadcastMessage> broadcastMessageConcurrentHashMap,
-                     ConcurrentHashMap<String, BroadcastReply> broadcastReplyConcurrentHashMap,
+                     HashMap<String, BroadcastReply> broadcastReplyHashMap,
                      Config config, Logger logger) {
         this.socket = socket;
         this.logger = logger;
@@ -29,7 +30,7 @@ public class SuperPeerHandler extends Thread {
         this.dataInputStream = dataInputStream;
         this.dataOutputStream = dataOutputStream;
         this.broadcastMessageConcurrentHashMap = broadcastMessageConcurrentHashMap;
-        this.broadcastReplyConcurrentHashMap = broadcastReplyConcurrentHashMap;
+        this.broadcastReplyHashMap = broadcastReplyHashMap;
         setSuperPeerId();
     }
 
@@ -144,12 +145,11 @@ public class SuperPeerHandler extends Thread {
             logger.serverLog("A broadcast reply has come in for message ID: "+broadcastReplyId+" If a client still wants this, it is now available!");
 
             /* If reply id has not been seen before  add it to concurrent hash map - so the client can see it*/
-            if(!broadcastReplyConcurrentHashMap.containsKey(broadcastReplyId)) {
-                broadcastReplyConcurrentHashMap.put(broadcastReplyId, broadcastReply);
+            if(!broadcastReplyHashMap.containsKey(broadcastReplyId)) {
+                broadcastReplyHashMap.put(broadcastReplyId, broadcastReply);
+            } else {
+                logger.serverLog("The broadcast reply for message ID: "+broadcastReplyId+" has been seen before! Ignoring! ");
             }
-
-            /* Else ignore */
-            logger.serverLog("The broadcast reply for message ID: "+broadcastReplyId+" has been seen before! Ignoring! ");
 
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
