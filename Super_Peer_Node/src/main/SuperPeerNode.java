@@ -120,7 +120,8 @@ public class SuperPeerNode {
 
         if(!connectionString.equals("None")) {
 
-        String[] connectionStringArray = connectionString.trim().split(";");
+            connectionString=connectionString.substring(1, connectionString.length()-1);
+            String[] connectionStringArray = connectionString.trim().split(";");
 
         for(String superPeerNodeId : connectionStringArray) {
 
