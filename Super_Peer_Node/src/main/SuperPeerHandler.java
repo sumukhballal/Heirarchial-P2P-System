@@ -23,13 +23,13 @@ public class SuperPeerHandler extends Thread {
                      ConcurrentHashMap<String, BroadcastMessage> broadcastMessageConcurrentHashMap,
                      ConcurrentHashMap<String, BroadcastReply> broadcastReplyConcurrentHashMap,
                      Config config, Logger logger) {
-        this.socket=socket;
-        this.logger=logger;
-        this.config=config;
+        this.socket = socket;
+        this.logger = logger;
+        this.config = config;
         this.dataInputStream = dataInputStream;
         this.dataOutputStream = dataOutputStream;
-        this.broadcastMessageConcurrentHashMap=broadcastMessageConcurrentHashMap;
-        this.broadcastReplyConcurrentHashMap=broadcastReplyConcurrentHashMap;
+        this.broadcastMessageConcurrentHashMap = broadcastMessageConcurrentHashMap;
+        this.broadcastReplyConcurrentHashMap = broadcastReplyConcurrentHashMap;
         setSuperPeerId();
     }
 
@@ -198,6 +198,7 @@ public class SuperPeerHandler extends Thread {
         config.getSuperPeerNodesConnections().put(superPeerId, superNode);
         logger.serverLog("SuperNode "+superPeerId+" has been registered! ");
         done();
+        dataOutputStream.writeUTF(Integer.toString(config.getSuperPeerNodePort()));
     }
 
     /* A helper function which lets the client know it can start writing new data to the this thread */

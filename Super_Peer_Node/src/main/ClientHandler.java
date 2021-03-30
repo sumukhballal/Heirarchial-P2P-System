@@ -233,6 +233,7 @@ public class ClientHandler extends  Thread {
                 }
                 DataOutputStream out = new DataOutputStream(superNode.getSocket().getOutputStream());
                 out.writeUTF("broadcast_request");
+                logger.serverLog("Just wrote broadcast request to super node with id "+superNode.getId());
                 /* Create Broadcast Request */
                 BroadcastMessage broadcastMessage = new BroadcastMessage(broadcastId, fileName, 3, clientId);
                 /* Object output stream */

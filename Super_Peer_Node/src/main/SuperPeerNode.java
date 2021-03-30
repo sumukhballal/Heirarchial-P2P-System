@@ -32,12 +32,12 @@ public class SuperPeerNode {
 
         SuperPeerNode superPeerNode = new SuperPeerNode();
         superPeerNode.createLogFile();
-        Config config=superPeerNode.readConfigFile();
-
-
         /* Create the broadcast messages hashmap Output and Input */
         ConcurrentHashMap<String, BroadcastMessage> broadcastMessageConcurrentHashMap = new ConcurrentHashMap<>();
         ConcurrentHashMap<String, BroadcastReply> broadcastReplyConcurrentHashMap = new ConcurrentHashMap<>();
+
+        Config config=superPeerNode.readConfigFile(broadcastMessageConcurrentHashMap, broadcastReplyConcurrentHashMap);
+
 
         try {
 
@@ -73,7 +73,8 @@ public class SuperPeerNode {
     }
 
     /* Read config file */
-    private Config readConfigFile() {
+    private Config readConfigFile(ConcurrentHashMap<String, BroadcastMessage> broadcastMessageConcurrentHashMap,
+                                  ConcurrentHashMap<String, BroadcastReply> broadcastReplyConcurrentHashMap) {
 
         String configFilePath=System.getProperty("user.dir")+"/resources/config.properties";
         HashMap<String,String> configProperties=new HashMap<>();
@@ -95,10 +96,19 @@ public class SuperPeerNode {
         }
 
         /* Create config object */
+        ConcurrentHashMap<String, SuperNode> superNodeConcurrentHashMap = getSuperNodeConnectionsHashMap(configProperties);
+
         Config config = new Config(configProperties.get("super_node_ip"),
                 Integer.parseInt(configProperties.get("super_node_port")),
-                getSuperNodeConnectionsHashMap(configProperties),
+                superNodeConcurrentHashMap,
                 getPeerNodeConnectionHashmap(configProperties));
+
+        for(String superNodeId : superNodeConcurrentHashMap.keySet()) {
+            SuperNode superNode = superNodeConcurrentHashMap.get(superNodeId);
+            new SuperPeerHandler(superNode.getSocket(),
+                    superNode.getDataInputStream(),
+                    superNode.getDataOutputStream(), broadcastMessageConcurrentHashMap, broadcastReplyConcurrentHashMap, config, logger).start();
+        }
 
         return config;
     }
