@@ -13,8 +13,8 @@ public class SuperPeerNode {
     static main.Logger logger;
 
     enum clientType {
-        superpeer,
-        peer
+        SUPER_PEER,
+        PEER
     }
 
     public static void main(String[] args) {
@@ -116,6 +116,7 @@ public class SuperPeerNode {
             int port = Integer.parseInt(superPeerNodeId.split(":")[1]);
 
             try {
+                logger.serverLog("Attempting to create a socket with "+InetAddress.getByName(ip)+": "+port);
                 Socket superPeerSocket = new Socket(InetAddress.getByName(ip), port);
 
                 SuperNode superNode = new SuperNode(superPeerNodeId, superPeerSocket,
