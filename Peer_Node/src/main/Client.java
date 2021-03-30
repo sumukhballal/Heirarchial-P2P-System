@@ -95,64 +95,82 @@ public class Client extends Thread {
     * Second select a peer node and download from it.
     *  */
     private void downloadFile(String fileName) {
-        try {
-            DataOutputStream output= superPeerNode.getDataOutputStream();
-            DataInputStream input= superPeerNode.getDataInputStream();
+        if (!checkIfFileExists(fileName)) {
 
-            /* Query the indexing server */
-            System.out.println("Querying the index Server for file : "+fileName);
+            try {
+            DataOutputStream output = superPeerNode.getDataOutputStream();
+            DataInputStream input = superPeerNode.getDataInputStream();
 
-            /* Calculate response time for query to Indexing server */
-            long startTime=System.nanoTime();
-            output.writeUTF("query");
-            String response=input.readUTF();
+            /* If the file is already present on the server then dont download */
 
-            if(response.equals("error")) {
-                System.out.println("Client is unable to download a file because indexing server threw an error during query! ");
-                return;
+                /* Query the indexing server */
+                System.out.println("Querying the Super Node for file : " + fileName);
+
+                /* Calculate response time for query to Indexing server */
+                long startTime = System.nanoTime();
+                output.writeUTF("query");
+                String response = input.readUTF();
+
+                if (response.equals("error")) {
+                    System.out.println("Client is unable to download a file because Super Node threw an error during query! ");
+                    return;
+                }
+
+                /* Unique ID for query message */
+                output.writeUTF(clientId + ":" + getRandomString());
+                /* Send filename to be checked */
+                output.writeUTF(fileName);
+                /* Check if q query hit or miss */
+                response = input.readUTF();
+
+                /* If query hit */
+                if (response.equals("query_miss")) {
+                    System.out.println("Client is unable to download a file because None of the Super Peer Nodes have the file! ");
+                    return;
+                }
+                /* Received a response so calculate response time here */
+                String nodeListWithFile = input.readUTF();
+                response = input.readUTF();
+
+                long elapsedTime = System.nanoTime() - startTime;
+
+                logger.clientLog("avg_response_time: It took " + elapsedTime + " Nanoseconds to get a response from the Super Node Server!");
+
+                if (response.equals("error")) {
+                    System.out.println("Client is unable to download a file because indexing server threw an error during query! ");
+                    return;
+                }
+
+                P2PNode node = getNodeToDownloadFrom(nodeListWithFile);
+                if (node == null) {
+                    System.out.println("No node found where this file resides! ");
+                    return;
+                }
+
+                System.out.println("Super Node found file in P2P Node with ID " + node.getId() + "\n");
+                System.out.println("Sending download request for file " + fileName + " to node with ID " + node.getId());
+                /* Download the file from the node */
+                downloadRequest(node, fileName);
+                /* Exit node socket */
+                node.exit();
+
+            } catch(IOException e){
+                e.printStackTrace();
             }
-
-            /* Unique ID for query message */
-            output.writeUTF(clientId+":"+getRandomString());
-            /* Send filename to be checked */
-            output.writeUTF(fileName);
-            /* Check if q query hit or miss */
-            response=input.readUTF();
-
-            /* If query hit */
-            if(response.equals("query_miss")) {
-                System.out.println("Client is unable to download a file because None of the Super Peer Nodes have the file! ");
-                return;
-            }
-            /* Received a response so calculate response time here */
-            String nodeListWithFile = input.readUTF();
-            response = input.readUTF();
-
-            long elapsedTime=System.nanoTime() - startTime;
-
-            logger.clientLog("avg_response_time: It took "+elapsedTime+" Nanoseconds to get a response from the Indexing Server!");
-
-            if(response.equals("error")) {
-                System.out.println("Client is unable to download a file because indexing server threw an error during query! ");
-                return;
-            }
-
-            P2PNode node = getNodeToDownloadFrom(nodeListWithFile);
-            if(node==null) {
-                System.out.println("No node found where this file resides! ");
-                return;
-            }
-
-            System.out.println("Super Node found file in P2P Node with ID "+node.getId()+"\n");
-            System.out.println("Sending download request for file "+fileName+" to node with ID "+node.getId());
-            /* Download the file from the node */
-            downloadRequest(node, fileName);
-            /* Exit node socket */
-            node.exit();
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        } else {
+            logger.clientLog("File "+fileName+" already exists on server no need to download!");
         }
+    }
+
+    private boolean checkIfFileExists(String filename) {
+
+        String filePath=config.getHostFilePath() + filename;
+        logger.clientLog("Checking if file exists : "+filePath);
+        File file = new File(filePath);
+        if(file.exists())
+            return true;
+
+        return false;
     }
 
     private String getRandomString() {
