@@ -103,10 +103,10 @@ public class SuperPeerNode {
         return config;
     }
 
-    private HashMap<String, SuperNode> getSuperNodeConnectionsHashMap(HashMap<String, String> configProperties) {
+    private ConcurrentHashMap<String, SuperNode> getSuperNodeConnectionsHashMap(HashMap<String, String> configProperties) {
 
         String connectionString = configProperties.get("super_node_connection_string");
-        HashMap<String, SuperNode> result = new HashMap<>();
+        ConcurrentHashMap<String, SuperNode> result = new ConcurrentHashMap<>();
 
         if(!connectionString.equals("None")) {
 

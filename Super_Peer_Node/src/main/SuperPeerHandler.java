@@ -36,8 +36,6 @@ public class SuperPeerHandler extends Thread {
 
     @Override
     public void run() {
-
-
             try {
                 while (true) {
                     String command = dataInputStream.readUTF();

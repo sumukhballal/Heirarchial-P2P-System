@@ -212,7 +212,7 @@ public class ClientHandler extends  Thread {
     private List<String> broadcastMessage(String fileName, String broadcastId) {
 
         /* Get super nodes hashmap */
-        HashMap<String, SuperNode> superNodes = config.getSuperPeerNodesConnections();
+        ConcurrentHashMap<String, SuperNode> superNodes = config.getSuperPeerNodesConnections();
         /* Result List */
         List<String> result = new ArrayList<>();
 
@@ -222,11 +222,17 @@ public class ClientHandler extends  Thread {
                 SuperNode superNode = (SuperNode) superNodeEntry.getValue();
                 logger.serverLog("Broadcasting request for  "+fileName+" to "+superNode.getId());
                 /* Type of request */
-                superNode.getDataOutputStream().writeUTF("superpeer_request");
+                //superNode.getDataOutputStream().writeUTF("superpeer_request");
                 /* Send port number */
-                superNode.getDataOutputStream().writeUTF(Integer.toString(superNode.getPortNumber()));
+                //superNode.getDataOutputStream().writeUTF(Integer.toString(superNode.getPortNumber()));
                 /* Send action */
-                superNode.getDataOutputStream().writeUTF("broadcast_request");
+
+                if(superNode.getSocket()==null) {
+                    logger.serverLog("The socket is null for this! ");
+                    return result;
+                }
+                DataOutputStream out = new DataOutputStream(superNode.getSocket().getOutputStream());
+                out.writeUTF("broadcast_request");
                 /* Create Broadcast Request */
                 BroadcastMessage broadcastMessage = new BroadcastMessage(broadcastId, fileName, 3, clientId);
                 /* Object output stream */

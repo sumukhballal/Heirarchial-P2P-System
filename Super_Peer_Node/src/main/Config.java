@@ -8,11 +8,11 @@ public class Config {
     private int superPeerNodePort;
     private String superPeerNodeIp;
     /* */
-    private HashMap<String, SuperNode> superPeerNodesConnections;
+    private ConcurrentHashMap<String, SuperNode> superPeerNodesConnections;
     private ConcurrentHashMap<String, PeerNode> peerNodesConnections;
 
 
-    public Config(String superPeerNodeIp, int superPeerNodePort, HashMap<String, SuperNode> superPeerNodesConnections, ConcurrentHashMap<String, PeerNode> peerNodesConnections) {
+    public Config(String superPeerNodeIp, int superPeerNodePort, ConcurrentHashMap<String, SuperNode> superPeerNodesConnections, ConcurrentHashMap<String, PeerNode> peerNodesConnections) {
         this.superPeerNodeIp=superPeerNodeIp;
         this.superPeerNodePort=superPeerNodePort;
         this.superPeerNodesConnections=superPeerNodesConnections;
@@ -27,7 +27,7 @@ public class Config {
         return superPeerNodeIp;
     }
 
-    public HashMap<String, SuperNode> getSuperPeerNodesConnections() {
+    public ConcurrentHashMap<String, SuperNode> getSuperPeerNodesConnections() {
         return superPeerNodesConnections;
     }
 
