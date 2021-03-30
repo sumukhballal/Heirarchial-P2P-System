@@ -149,16 +149,20 @@ public class SuperPeerNode {
 
     private ConcurrentHashMap<String, PeerNode> getPeerNodeConnectionHashmap(HashMap<String, String> configProperties) {
 
+
         String connectionString = configProperties.get("peer_node_connection_string");
-        String[] connectionStringArray = connectionString.trim().split(",");
         ConcurrentHashMap<String, PeerNode> result = new ConcurrentHashMap<>();
 
-        for(String peerNodeId : connectionStringArray) {
+        if(!connectionString.equals("change_peer_node_connection_string")) {
+            String[] connectionStringArray = connectionString.trim().split(",");
 
-            String ip = peerNodeId.split(":")[0];
-            int port = Integer.parseInt(peerNodeId.split(":")[1]);
-            PeerNode peerNode = new PeerNode(peerNodeId, ip, port, logger);
-            result.put(peerNodeId, peerNode);
+            for (String peerNodeId : connectionStringArray) {
+
+                String ip = peerNodeId.split(":")[0];
+                int port = Integer.parseInt(peerNodeId.split(":")[1]);
+                PeerNode peerNode = new PeerNode(peerNodeId, ip, port, logger);
+                result.put(peerNodeId, peerNode);
+            }
         }
 
         return result;
