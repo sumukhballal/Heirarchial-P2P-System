@@ -37,27 +37,30 @@ public class SuperPeerHandler extends Thread {
     @Override
     public void run() {
 
-        try {
-            String command = dataInputStream.readUTF();
 
-            logger.serverLog("A command for "+command+" has come in from Super Peer with ID: "+superPeerId);
+            try {
+                while (true) {
+                    String command = dataInputStream.readUTF();
 
-            switch (command) {
-                case "register_supernode":
-                    register();
-                    break;
-                case "broadcast_request":
-                    broadcastRequest();
-                    break;
-                case "broadcast_reply":
-                    broadcastReply();
-                    break;
+                    logger.serverLog("A command for " + command + " has come in from Super Peer with ID: " + superPeerId);
+
+                    switch (command) {
+                        case "register_supernode":
+                            register();
+                            break;
+                        case "broadcast_request":
+                            broadcastRequest();
+                            break;
+                        case "broadcast_reply":
+                            broadcastReply();
+                            break;
+                    }
+                }
+            }  catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                exit();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            exit();
-        }
 
     }
 
@@ -157,8 +160,8 @@ public class SuperPeerHandler extends Thread {
 
     private void broadcastRequestWrite(DataOutputStream outputStream) {
         try {
-            outputStream.writeUTF("superpeer_request");
-            outputStream.writeUTF(Integer.toString(superPeerNodePort));
+//            outputStream.writeUTF("superpeer_request");
+//            outputStream.writeUTF(Integer.toString(superPeerNodePort));
             outputStream.writeUTF("broadcast_request");
         } catch (IOException e) {
             e.printStackTrace();
@@ -175,8 +178,8 @@ public class SuperPeerHandler extends Thread {
 
     private void broadcastReplyWrite() {
         try {
-            dataOutputStream.writeUTF("superpeer_request");
-            dataOutputStream.writeUTF(Integer.toString(superPeerNodePort));
+//            dataOutputStream.writeUTF("superpeer_request");
+//            dataOutputStream.writeUTF(Integer.toString(superPeerNodePort));
             dataOutputStream.writeUTF("broadcast_reply");
         } catch (IOException e) {
             e.printStackTrace();
