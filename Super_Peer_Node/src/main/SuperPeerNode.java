@@ -47,9 +47,9 @@ public class SuperPeerNode {
             logger.serverLog("Listening on port "+config.getSuperPeerNodePort());
             /* Infinite Loop which listens to sockets */
             while(true) {
-                logger.serverLog("Got a request! ");
-                totalRequests+=1;
                 Socket socket = serverSocket.accept();
+                totalRequests+=1;
+                logger.serverLog("Got a request! ");
                 DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
                 DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
                 /* What king of request is this - Peer Node or Super Peer Node */
@@ -135,7 +135,7 @@ public class SuperPeerNode {
                 String response = superNode.getDataInputStream().readUTF();
 
                 if (response.equals("done")) {
-                    System.out.println("Successfully registered with Super Node with ID " + superPeerNodeId);
+                    logger.serverLog("Successfully registered with Super Node with ID " + superPeerNodeId);
                 }
 
                 result.put(superPeerNodeId, superNode);

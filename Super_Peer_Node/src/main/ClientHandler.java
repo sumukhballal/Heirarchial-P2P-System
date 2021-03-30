@@ -190,10 +190,10 @@ public class ClientHandler extends  Thread {
 
             /* Already found in local peer nodes - send nodes back */
             if(peerNodesWithFile.size()!=0) {
+                logger.serverLog("Found in local peer nodes! Not broadcasting request! ");
                 dataOutputStream.writeUTF(peerNodesWithFile.toString());
             } else {
-
-                /* Broadcast message to all super nodes */
+                /* Broadcast message to all super   nodes */
                 List<String> peerNodesWithFileFromBroadCast=broadcastMessage(fileName, uniqueMessageId);
                 /* If size is 0 - we have a query miss */
                 if(peerNodesWithFileFromBroadCast.size()==0)
@@ -220,6 +220,7 @@ public class ClientHandler extends  Thread {
             /* Go one by one over and broadcast the message to all super nodes */
             for (Map.Entry superNodeEntry : superNodes.entrySet()) {
                 SuperNode superNode = (SuperNode) superNodeEntry.getValue();
+                logger.serverLog("Broadcasting request for  "+fileName+" to "+superNode.getId());
                 /* Type of request */
                 superNode.getDataOutputStream().writeUTF("superpeer_request");
                 /* Send port number */
@@ -229,9 +230,7 @@ public class ClientHandler extends  Thread {
                 /* Create Broadcast Request */
                 BroadcastMessage broadcastMessage = new BroadcastMessage(broadcastId, fileName, 3, clientId);
                 /* Object output stream */
-                /*
-                superNode.getObjectOutputStream().writeObject(broadcastMessage);
-                */
+                new ObjectOutputStream(superNode.getSocket().getOutputStream()).writeObject(broadcastMessage);
             }
 
 

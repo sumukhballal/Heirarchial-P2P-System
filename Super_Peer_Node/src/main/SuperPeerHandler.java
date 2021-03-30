@@ -105,9 +105,7 @@ public class SuperPeerHandler extends Thread {
                     for (String key : config.getSuperPeerNodesConnections().keySet()) {
                         SuperNode superNode = config.getSuperPeerNodesConnections().get(key);
                         broadcastRequestWrite(superNode.getDataOutputStream());
-                        /*
-                        broadcastRequestWriteObject(superNode.getObjectOutputStream(), broadcastMessage);
-                    */
+                        broadcastRequestWriteObject(new ObjectOutputStream(superNode.getSocket().getOutputStream()), broadcastMessage);
                     }
                 }
             } else {
