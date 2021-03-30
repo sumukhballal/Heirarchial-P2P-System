@@ -55,7 +55,7 @@ public class SuperPeerNode {
 
                 if(command.equals("superpeer_request")) {
                     type=0;
-                    new SuperPeerHandler(socket, dataInputStream, dataOutputStream, broadcastMessageConcurrentHashMap, config, logger).start();
+                    new SuperPeerHandler(socket, dataInputStream, dataOutputStream, broadcastMessageConcurrentHashMap, broadcastReplyConcurrentHashMap, config, logger).start();
                 } else if(command.equals("peer_request")) {
                     type=1;
                     new ClientHandler(socket, dataInputStream, dataOutputStream, broadcastReplyConcurrentHashMap,  config,  logger).start();
