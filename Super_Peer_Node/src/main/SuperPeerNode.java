@@ -1,6 +1,7 @@
 package main;
 
 import java.io.*;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
@@ -115,7 +116,7 @@ public class SuperPeerNode {
             int port = Integer.parseInt(superPeerNodeId.split(":")[1]);
 
             try {
-                Socket superPeerSocket = new Socket(ip, port);
+                Socket superPeerSocket = new Socket(InetAddress.getByName(ip), port);
 
                 SuperNode superNode = new SuperNode(superPeerNodeId, superPeerSocket,
                         new DataOutputStream(superPeerSocket.getOutputStream()),
