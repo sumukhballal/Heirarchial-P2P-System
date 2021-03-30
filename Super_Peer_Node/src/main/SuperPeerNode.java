@@ -103,8 +103,11 @@ public class SuperPeerNode {
     private HashMap<String, SuperNode> getSuperNodeConnectionsHashMap(HashMap<String, String> configProperties) {
 
         String connectionString = configProperties.get("super_node_connection_string");
-        String[] connectionStringArray = connectionString.trim().split(",");
         HashMap<String, SuperNode> result = new HashMap<>();
+
+        if(!connectionString.equals("None")) {
+
+        String[] connectionStringArray = connectionString.trim().split(";");
 
         for(String superPeerNodeId : connectionStringArray) {
 
@@ -130,15 +133,15 @@ public class SuperPeerNode {
                 /* Check if register happened successfully */
                 String response = superNode.getDataInputStream().readUTF();
 
-                if(response.equals("done")) {
-                    logger.serverLog("Successfully registered with Super Node with ID "+superPeerNodeId);
+                if (response.equals("done")) {
+                    logger.serverLog("Successfully registered with Super Node with ID " + superPeerNodeId);
                 }
 
                 result.put(superPeerNodeId, superNode);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
+            }
         }
 
         return result;
