@@ -7,4 +7,4 @@ compile:
 	javac ${directory}*.java -d ${output}
 
 run:
-	java -cp ./target main.IndexingServer
+	java -cp ./target main.SuperPeerNode
