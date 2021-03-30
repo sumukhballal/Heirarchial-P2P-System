@@ -105,7 +105,9 @@ public class SuperPeerHandler extends Thread {
                     for (String key : config.getSuperPeerNodesConnections().keySet()) {
                         SuperNode superNode = config.getSuperPeerNodesConnections().get(key);
                         broadcastRequestWrite(superNode.getDataOutputStream());
+                        /*
                         broadcastRequestWriteObject(superNode.getObjectOutputStream(), broadcastMessage);
+                    */
                     }
                 }
             } else {
@@ -179,10 +181,7 @@ public class SuperPeerHandler extends Thread {
             return;
         }
 
-        SuperNode superNode = new SuperNode(superPeerId, socket, dataOutputStream, dataInputStream,
-                new ObjectOutputStream(socket.getOutputStream()),
-                new ObjectInputStream(socket.getInputStream()),
-                superPeerIp, superPeerNodePort);
+        SuperNode superNode = new SuperNode(superPeerId, socket, dataOutputStream, dataInputStream, superPeerIp, superPeerNodePort);
         config.getSuperPeerNodesConnections().put(superPeerId, superNode);
         logger.serverLog("SuperNode "+superPeerId+" has been registered! ");
         done();

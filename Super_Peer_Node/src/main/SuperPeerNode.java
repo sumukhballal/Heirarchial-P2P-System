@@ -31,8 +31,9 @@ public class SuperPeerNode {
         /* Read config file */
 
         SuperPeerNode superPeerNode = new SuperPeerNode();
-        Config config=superPeerNode.readConfigFile();
         superPeerNode.createLogFile();
+        Config config=superPeerNode.readConfigFile();
+
 
         /* Create the broadcast messages hashmap Output and Input */
         ConcurrentHashMap<String, BroadcastMessage> broadcastMessageConcurrentHashMap = new ConcurrentHashMap<>();
@@ -46,6 +47,7 @@ public class SuperPeerNode {
             logger.serverLog("Listening on port "+config.getSuperPeerNodePort());
             /* Infinite Loop which listens to sockets */
             while(true) {
+                logger.serverLog("Got a request! ");
                 totalRequests+=1;
                 Socket socket = serverSocket.accept();
                 DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
@@ -116,14 +118,11 @@ public class SuperPeerNode {
             int port = Integer.parseInt(superPeerNodeId.split(":")[1]);
 
             try {
-                logger.serverLog("Attempting to create a socket with "+InetAddress.getByName(ip)+": "+port);
                 Socket superPeerSocket = new Socket(InetAddress.getByName(ip), port);
 
                 SuperNode superNode = new SuperNode(superPeerNodeId, superPeerSocket,
                         new DataOutputStream(superPeerSocket.getOutputStream()),
                         new DataInputStream(superPeerSocket.getInputStream()),
-                        new ObjectOutputStream(superPeerSocket.getOutputStream()),
-                        new ObjectInputStream(superPeerSocket.getInputStream()),
                         ip, port);
 
                 /* Tell the already existing super node that he wants to register himself */
@@ -136,7 +135,7 @@ public class SuperPeerNode {
                 String response = superNode.getDataInputStream().readUTF();
 
                 if (response.equals("done")) {
-                    logger.serverLog("Successfully registered with Super Node with ID " + superPeerNodeId);
+                    System.out.println("Successfully registered with Super Node with ID " + superPeerNodeId);
                 }
 
                 result.put(superPeerNodeId, superNode);

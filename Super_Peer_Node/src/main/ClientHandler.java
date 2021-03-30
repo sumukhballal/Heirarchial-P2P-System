@@ -229,7 +229,9 @@ public class ClientHandler extends  Thread {
                 /* Create Broadcast Request */
                 BroadcastMessage broadcastMessage = new BroadcastMessage(broadcastId, fileName, 3, clientId);
                 /* Object output stream */
+                /*
                 superNode.getObjectOutputStream().writeObject(broadcastMessage);
+                */
             }
 
 
