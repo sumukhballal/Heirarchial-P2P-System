@@ -1,6 +1,8 @@
 package main;
 
-public class BroadcastMessage {
+import java.io.Serializable;
+
+public class BroadcastMessage implements Serializable {
     String id;
     String fileName;
     int TTL;

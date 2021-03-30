@@ -1,6 +1,8 @@
 package main;
 
-public class BroadcastReply {
+import java.io.Serializable;
+
+public class BroadcastReply implements Serializable {
     String id;
     String fileName;
     String peerNodeWithFileId;
