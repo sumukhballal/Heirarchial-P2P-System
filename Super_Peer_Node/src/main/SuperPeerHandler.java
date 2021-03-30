@@ -55,8 +55,22 @@ public class SuperPeerHandler extends Thread {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            exit();
         }
 
+    }
+
+    private void exit() {
+        logger.serverLog("Exiting Super peer with ID "+superPeerId);
+
+        try {
+            dataInputStream.close();
+            dataOutputStream.close();
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /* Check if file is there on server else broadcast to other nodes */
