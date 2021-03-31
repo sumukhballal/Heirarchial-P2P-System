@@ -1,0 +1,318 @@
+Successfully registered with Super Node with ID localhost:8004
+Started Super Peer server!
+Listening on port 8005
+Got a request! 
+A command for register_supernode has come in from Super Peer with ID: 127.0.0.1:8006
+Accepted a request from SUPER_PEER Total Number of Requests: 1
+Checking if SuperNode 127.0.0.1:8006 has been registered previously!
+SuperNode 127.0.0.1:8006 has been registered! 
+Got a request! 
+Accepted a request from PEER Total Number of Requests: 2
+Connected to client with ID: 127.0.0.1:8015 !
+Received command register from client with ID: 127.0.0.1:8015
+Checking if client 127.0.0.1:8015 has been registered previously!
+Client 127.0.0.1:8015 has been registered! 
+Connected to client with ID: 127.0.0.1:8015 !
+Received command update_add from client with ID: 127.0.0.1:8015
+Adding a new file to  client 127.0.0.1:8015! 
+Added file: file_6.txt to client with ID 127.0.0.1:8015
+Added all files to client with ID: 127.0.0.1:8015
+Successfully registered with Super Node with ID localhost:8004
+Started Super Peer server!
+Listening on port 8005
+Got a request! 
+Accepted a request from SUPER_PEER Total Number of Requests: 1
+A command for register_supernode has come in from Super Peer with ID: 127.0.0.1:8006
+Checking if SuperNode 127.0.0.1:8006 has been registered previously!
+SuperNode 127.0.0.1:8006 has been registered! 
+Got a request! 
+Accepted a request from PEER Total Number of Requests: 2
+Connected to client with ID: 127.0.0.1:8015 !
+Received command register from client with ID: 127.0.0.1:8015
+Checking if client 127.0.0.1:8015 has been registered previously!
+Client 127.0.0.1:8015 has been registered! 
+Connected to client with ID: 127.0.0.1:8015 !
+Received command update_add from client with ID: 127.0.0.1:8015
+Adding a new file to  client 127.0.0.1:8015! 
+Added file: file_6.txt to client with ID 127.0.0.1:8015
+Added all files to client with ID: 127.0.0.1:8015
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: localhost/127.0.0.1:8004
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+Checking if this file exists on this SuperNode! 
+File for broadcast ID 127.0.0.1:8010:lxWgR not found! Hence broadcasting to other super nodes!
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 
+A command for broadcast_request has come in from Super Peer with ID: 127.0.0.1:8006
+A broadcast message has come in with id : 127.0.0.1:8010:lxWgR
+TTL For this broadcast message is 0! Ignoring! 

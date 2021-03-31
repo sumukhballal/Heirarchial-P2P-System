@@ -1,38 +1,76 @@
 #!/bin/bash
 
+sudo kill -9 $(ps aux | grep java | awk '{print $2}')
+rm -rf ../Evaluation/Eval2/
 mkdir -p ../Evaluation/Eval2/
 
-mkdir -p ../Evaluation/Eval2/Test_1 # where n=2
-./replicate_p2p_folders.sh "../Peer Node" "../Evaluation/Eval2/Test_1" 1 8004
-./replicate_p2p_folders.sh "../Peer Node" "../Evaluation/Eval2/Test_1" 2 8005
-
-mkdir -p ../Evaluation/Eval2/Test_2
-./replicate_p2p_folders.sh "../Peer Node" "../Evaluation/Eval2/Test_2" 1 8006
-./replicate_p2p_folders.sh "../Peer Node" "../Evaluation/Eval2/Test_2" 2 8007
-./replicate_p2p_folders.sh "../Peer Node" "../Evaluation/Eval2/Test_2" 3 8008
-./replicate_p2p_folders.sh "../Peer Node" "../Evaluation/Eval2/Test_2" 4 8009
-
-mkdir -p ../Evaluation/Eval2/Test_3
-./replicate_p2p_folders.sh "../Peer Node" "../Evaluation/Eval2/Test_3" 1 8010
-./replicate_p2p_folders.sh "../Peer Node" "../Evaluation/Eval2/Test_3" 2 8011
-./replicate_p2p_folders.sh "../Peer Node" "../Evaluation/Eval2/Test_3" 3 8012
-./replicate_p2p_folders.sh "../Peer Node" "../Evaluation/Eval2/Test_3" 4 8013
-./replicate_p2p_folders.sh "../Peer Node" "../Evaluation/Eval2/Test_3" 5 8014
-./replicate_p2p_folders.sh "../Peer Node" "../Evaluation/Eval2/Test_3" 6 8015
-./replicate_p2p_folders.sh "../Peer Node" "../Evaluation/Eval2/Test_3" 7 8016
-./replicate_p2p_folders.sh "../Peer Node" "../Evaluation/Eval2/Test_3" 8 8017
 
 
 
-./replicate_index_server_folder.sh "../Indexing Server" "../Evaluation/Eval2/"
+echo "Setup mesh network! "
+# All Super nodes 
+./replicate_supernode_folders.sh "../Super_Peer_Node" "../Evaluation/Eval2/mesh/" 1 8000 None
 
-./compile_all.sh "../Evaluation/Eval2/Test_1"
-./compile_all.sh "../Evaluation/Eval2/Test_2"
-./compile_all.sh "../Evaluation/Eval2/Test_3"
-./compile_all.sh "../Evaluation/Eval2/"
+connection_string="localhost:8000;"
+port=8000
+
+for ((i = 2 ; i <= 10 ; i++));
+do
+
+port=$(($port+1))
+current_string="localhost:$port;"
+
+./replicate_supernode_folders.sh "../Super_Peer_Node" "../Evaluation/Eval2/mesh/" $i $port "$connection_string"
+connection_string=$connection_string$current_string
+done
 
 
-cp -r ./eval2_run.sh ../Evaluation/Eval2/
-cp -r ./eval2_1_run.sh ../Evaluation/Eval2/Test_1
-cp -r ./eval2_2_run.sh ../Evaluation/Eval2/Test_2
-cp -r ./eval2_3_run.sh ../Evaluation/Eval2/Test_3
+# Clusters
+
+superpeerport=8000
+
+for ((i = 1 ; i <= 10 ; i++));
+do
+port=$(($port+1))
+./replicate_p2p_folders.sh "../Peer_Node" "../Evaluation/Eval2/mesh/" $i $port $superpeerport
+superpeerport=$(($superpeerport+1))
+k=$((k+1))
+done
+
+
+echo "Setup Linear network! "
+# All Super nodes
+./replicate_supernode_folders.sh "../Super_Peer_Node" "../Evaluation/Eval2/linear/" 1 8000 None
+
+port=8000
+
+for ((i = 2 ; i <= 10 ; i++));
+do
+port=$(($port+1))
+current_string="localhost:$((port-1));"
+./replicate_supernode_folders.sh "../Super_Peer_Node" "../Evaluation/Eval2/linear/" $i $port "$current_string"
+done
+
+
+# Clusters
+
+superpeerport=8000
+
+for ((i = 1 ; i <= 10 ; i++));
+do
+port=$(($port+1))
+./replicate_p2p_folders.sh "../Peer_Node" "../Evaluation/Eval2/linear/" $i $port $superpeerport
+superpeerport=$(($superpeerport+1))
+k=$((k+1))
+done
+
+
+./compile_all.sh "../Evaluation/Eval2/mesh"
+./compile_all.sh "../Evaluation/Eval2/linear"
+
+cp -r ./eval2_mesh_run.sh ../Evaluation/Eval2/mesh/
+cp -r ./eval2_linear_run.sh ../Evaluation/Eval2/linear/
+cp -r ./get_average_from_logs.sh ../Evaluation/Eval2/mesh/
+cp -r ./get_average_from_logs.sh ../Evaluation/Eval2/linear/
+
+

@@ -1,0 +1,6 @@
+Checking if file exists : ./files/file_1.txt
+avg_response_time: It took 60202746517 Nanoseconds to get a response from the Super Node Server!
+Super Node found file in P2P Node with ID 127.0.0.1:8003
+
+Sending download request for file file_1.txt to node with ID 127.0.0.1:8003
+avg_download_time: It took 136232754 Nanoseconds to get download a file file_1.txt of size 5000 from peer 127.0.0.1:8003
