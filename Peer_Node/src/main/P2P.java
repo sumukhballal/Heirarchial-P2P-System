@@ -38,7 +38,6 @@ public class P2P {
 
             /* Client - The client is configured as a thread. */
             new Client(superPeerNode, config, args, logger).start();
-
             /* This is the server */
             while(true) {
                 /* Accept a connection from another P2P node */

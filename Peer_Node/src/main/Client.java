@@ -79,15 +79,6 @@ public class Client extends Thread {
                     numberOfRequests--;
                 }
             }
-
-            /* Evaluation 3 */
-            if(clientMode.equals("3")) {
-                int numberOfTimes=Integer.parseInt(args[1]);
-                String fileName=args[2];
-                downloadFile(fileName);
-            }
-
-
         }
     }
 
