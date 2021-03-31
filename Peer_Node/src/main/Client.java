@@ -103,7 +103,7 @@ public class Client extends Thread {
                 String response = input.readUTF();
 
                 if (response.equals("error")) {
-                    System.out.println("Client is unable to download a file because Super Node threw an error during query! ");
+                    logger.clientLog("Client is unable to download a file because Super Node threw an error during query! ");
                     return;
                 }
 
@@ -116,7 +116,7 @@ public class Client extends Thread {
 
                 /* If query hit */
                 if (response.equals("query_miss")) {
-                    System.out.println("Client is unable to download a file because None of the Super Peer Nodes have the file! ");
+                    logger.clientLog("Client is unable to download a file because None of the Super Peer Nodes have the file! ");
                     return;
                 }
                 /* Received a response so calculate response time here */
@@ -128,13 +128,13 @@ public class Client extends Thread {
                 logger.clientLog("avg_response_time: It took " + elapsedTime + " Nanoseconds to get a response from the Super Node Server!");
 
                 if (response.equals("error")) {
-                    System.out.println("Client is unable to download a file because indexing server threw an error during query! ");
+                    logger.clientLog("Client is unable to download a file because indexing server threw an error during query! ");
                     return;
                 }
 
                 P2PNode node = getNodeToDownloadFrom(nodeListWithFile);
                 if (node == null) {
-                    System.out.println("No node found where this file resides! ");
+                    logger.clientLog("No node found where this file resides! ");
                     return;
                 }
 
@@ -222,7 +222,7 @@ public class Client extends Thread {
             String response=indexingServerInput.readUTF();
 
             if(response.equals("error")) {
-                System.out.println("Not possible to inform the indexing server! Retry! ");
+                logger.clientLog("Not possible to inform the indexing server! Retry! ");
                 return;
             }
 
@@ -230,12 +230,12 @@ public class Client extends Thread {
             response=indexingServerInput.readUTF();
 
             if(response.equals("error")) {
-                System.out.println("Not possible to inform the indexing server! Retry! ");
+                logger.clientLog("Not possible to inform the indexing server! Retry! ");
                 return;
             }
 
             /* File has been added */
-            System.out.println("File "+fileName+" has been added to the Super Peer server! ");
+            logger.clientLog("File "+fileName+" has been added to the Super Peer server! ");
 
 
         } catch (IOException e) {
@@ -309,7 +309,7 @@ public class Client extends Thread {
     }
 
     private void downloadSerial(String fileName, String filePath, int fileSize, DataInputStream input)  {
-        System.out.println("Downloading file  : " + fileName + " to directory " + filePath + " of size " + fileSize+" bytes!");
+        logger.clientLog("Downloading file  : " + fileName + " to directory " + filePath + " of size " + fileSize+" bytes!");
         File file = new File(filePath+"/"+fileName);
         byte[] fileBytes = new byte[fileSize];
 
@@ -321,6 +321,6 @@ public class Client extends Thread {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        System.out.println("\n File "+fileName+" downloaded! \n");
+        logger.clientLog("\n File "+fileName+" downloaded! \n");
     }
 }
