@@ -147,8 +147,8 @@ public class Client extends Thread {
                     return;
                 }
 
-                System.out.println("Super Node found file in P2P Node with ID " + node.getId() + "\n");
-                System.out.println("Sending download request for file " + fileName + " to node with ID " + node.getId());
+               logger.clientLog("Super Node found file in P2P Node with ID " + node.getId() + "\n");
+                logger.clientLog("Sending download request for file " + fileName + " to node with ID " + node.getId());
                 /* Download the file from the node */
                 downloadRequest(node, fileName);
                 /* Exit node socket */
@@ -205,7 +205,7 @@ public class Client extends Thread {
             downloadSerial(fileName, config.getHostFilePath(), fileSize, input);
             /* Received a response so calculate response time here */
             long elapsedTime=System.nanoTime() - startTime;
-            logger.clientLog("avg_download_time: It took "+elapsedTime+" Nanoseconds to get download a file "+fileName+" of size "+fileSize+" !");
+            logger.clientLog("avg_download_time: It took "+elapsedTime+" Nanoseconds to get download a file "+fileName+" of size "+fileSize+" from peer "+node.getId());
             /* Let indexing server know */
             informIndexingServer(true, fileName);
 
@@ -244,7 +244,7 @@ public class Client extends Thread {
             }
 
             /* File has been added */
-            System.out.println("File "+fileName+" has been added to the indexing server! ");
+            System.out.println("File "+fileName+" has been added to the Super Peer server! ");
 
 
         } catch (IOException e) {

@@ -79,8 +79,7 @@ public class SuperPeerHandler extends Thread {
     private void broadcastRequest() {
 
         try {
-            ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
-            BroadcastMessage broadcastMessage = (BroadcastMessage) objectInputStream.readObject();
+            BroadcastMessage broadcastMessage = (BroadcastMessage) new ObjectInputStream(socket.getInputStream()).readObject();
 
             /* Store the broadcast Message */
             String broadcastMessageId=broadcastMessage.getId();
@@ -142,8 +141,7 @@ public class SuperPeerHandler extends Thread {
     private void broadcastReply() {
 
         try {
-            ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
-            BroadcastReply broadcastReply = (BroadcastReply) objectInputStream.readObject();
+            BroadcastReply broadcastReply = (BroadcastReply) new ObjectInputStream(socket.getInputStream()).readObject();
             String broadcastReplyId=broadcastReply.getId();
 
             logger.serverLog("A broadcast reply has come in for message ID: "+broadcastReplyId+" If a client still wants this, it is now available!");
@@ -163,8 +161,6 @@ public class SuperPeerHandler extends Thread {
 
     private void broadcastRequestWrite(DataOutputStream outputStream) {
         try {
-//            outputStream.writeUTF("superpeer_request");
-//            outputStream.writeUTF(Integer.toString(superPeerNodePort));
             outputStream.writeUTF("broadcast_request");
         } catch (IOException e) {
             e.printStackTrace();
