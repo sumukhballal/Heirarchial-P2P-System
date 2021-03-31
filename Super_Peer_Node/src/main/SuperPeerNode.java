@@ -32,8 +32,14 @@ public class SuperPeerNode {
 
         /* Read config file */
 
+        int logSuppressMode=0;
+
+        if(args.length!=0) {
+            logSuppressMode=1;
+        }
+
         SuperPeerNode superPeerNode = new SuperPeerNode();
-        superPeerNode.createLogFile();
+        superPeerNode.createLogFile(logSuppressMode);
         /* Create the broadcast messages hashmap Output and Input */
         ConcurrentHashMap<String, BroadcastMessage> broadcastMessageConcurrentHashMap = new ConcurrentHashMap<>();
         broadcastReplyHashMap = new HashMap<>();
@@ -180,7 +186,7 @@ public class SuperPeerNode {
         return result;
     }
 
-    private void createLogFile() {
+    private void createLogFile(int logSupressMode) {
         String serverLogPath=System.getProperty("user.dir")+"/logs/server.log";
 
         File serverFile = new File(serverLogPath);
@@ -189,7 +195,7 @@ public class SuperPeerNode {
             serverFile.createNewFile();
 
             /* Assign logger */
-            logger=new Logger(serverLogPath);
+            logger=new Logger(serverLogPath, logSupressMode);
         } catch (IOException e) {
             e.printStackTrace();
         }

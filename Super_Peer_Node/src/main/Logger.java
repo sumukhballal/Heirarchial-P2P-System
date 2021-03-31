@@ -7,14 +7,19 @@ import java.io.IOException;
 public class Logger {
 
     String serverFile;
+    int logSupressMode;
 
-    Logger(String serverFile) {
+    Logger(String serverFile, int logSupressMode) {
+
         this.serverFile=serverFile;
+        this.logSupressMode=logSupressMode;
     }
 
 
     public void serverLog(String data) {
-        System.out.println(data);
+        if(logSupressMode==0) {
+            System.out.println(data);
+        }
         try {
 
             FileWriter serverFileWriter=new FileWriter(serverFile, true);
