@@ -84,7 +84,7 @@ public class SuperPeerHandler extends Thread {
 
             /* Store the broadcast Message */
             String broadcastMessageId=broadcastMessage.getId();
-
+            logger.serverLog("A broadcast message has come in with id : "+broadcastMessageId);
             /* If TTL is 0 : Ignore */
             if(broadcastMessage.getTTL()!=0) {
 
@@ -98,10 +98,14 @@ public class SuperPeerHandler extends Thread {
                 /* First check if file resides on other peer nodes on the same list */
                 String fileName = broadcastMessage.getFileName();
                 boolean foundFile = false;
+
+                logger.serverLog("Checking if this file exists on this SuperNode! ");
                 for (Map.Entry node : config.getPeerNodesConnections().entrySet()) {
+
                     PeerNode currentPeerNode = (PeerNode) node.getValue();
 
                     if (currentPeerNode.files.contains(fileName)) {
+                        logger.serverLog("File has been found on this supernode! "+ fileName);
                         broadcastReplyWrite();
                         BroadcastReply broadcastReply = new BroadcastReply(broadcastMessageId, fileName, currentPeerNode.getId());
                         ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
@@ -146,6 +150,7 @@ public class SuperPeerHandler extends Thread {
 
             /* If reply id has not been seen before  add it to concurrent hash map - so the client can see it*/
             if(!broadcastReplyHashMap.containsKey(broadcastReplyId)) {
+                logger.serverLog("The broadcast reply for message id "+broadcastReplyId+" is now stored in hashmap! ");
                 broadcastReplyHashMap.put(broadcastReplyId, broadcastReply);
             } else {
                 logger.serverLog("The broadcast reply for message ID: "+broadcastReplyId+" has been seen before! Ignoring! ");

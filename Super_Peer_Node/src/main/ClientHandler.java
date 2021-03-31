@@ -240,7 +240,7 @@ public class ClientHandler extends  Thread {
                 new ObjectOutputStream(superNode.getSocket().getOutputStream()).writeObject(broadcastMessage);
             }
 
-
+            logger.serverLog("Broadcast requests have been completed! Awaiting a response! ");
             /* Check periodically to get to see if response has come in */
             int i = 0;
             /* It will wait a maximum of 5 minutes */
