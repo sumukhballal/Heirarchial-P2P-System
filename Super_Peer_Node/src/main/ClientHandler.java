@@ -194,12 +194,14 @@ public class ClientHandler extends  Thread {
                 dataOutputStream.writeUTF(peerNodesWithFile.toString());
             } else {
                 /* Broadcast message to all super   nodes */
-                List<String> peerNodesWithFileFromBroadCast=broadcastMessage(fileName, uniqueMessageId);
+                List<String> peerNodesWithFileFromBroadCast = broadcastMessage(fileName, uniqueMessageId);
                 /* If size is 0 - we have a query miss */
-                if(peerNodesWithFileFromBroadCast.size()==0)
+                if (peerNodesWithFileFromBroadCast.size() == 0)
                     queryMiss();
-                else
+                else {
+                    queryHit();
                     dataOutputStream.writeUTF(peerNodesWithFileFromBroadCast.toString());
+                }
             }
             done();
         } catch (IOException e) {
