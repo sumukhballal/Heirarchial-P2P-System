@@ -105,6 +105,7 @@ public class SuperPeerHandler extends Thread {
 
                     if (currentPeerNode.files.contains(fileName)) {
                         logger.serverLog("File has been found on this supernode! "+ fileName);
+
                         broadcastReplyWrite();
                         BroadcastReply broadcastReply = new BroadcastReply(broadcastMessageId, fileName, currentPeerNode.getId());
                         ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
